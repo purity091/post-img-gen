@@ -963,8 +963,8 @@ const App: React.FC = () => {
     website: 'SmartInvestor.SA',
     headerTitle: 'منصة المسثتمرفي',
     headerSubtitle: 'رحلة لتطوير الاقتصاد العربي',
-    headerTitleSize: 22,
-    headerSubtitleSize: 14,
+    headerTitleSize: 16,
+    headerSubtitleSize: 11,
 
     // Logo & Branding Controls
     logoSize: 48,
@@ -1010,9 +1010,9 @@ const App: React.FC = () => {
     overlayGradient: 'fade-bottom',
 
     // Title Decoration Defaults
-    titleLine1Width: 80,
-    titleLine2Width: 20,
-    titleLineHeight: 8,
+    titleLine1Width: 60,
+    titleLine2Width: 15,
+    titleLineHeight: 4,
     titleLineColor: '#00E5C4',
     titleLineOpacity: 1,
     titleLineAlign: 'right',
@@ -1032,7 +1032,7 @@ const App: React.FC = () => {
     backgroundColor: '#0B0F2B',
     backgroundGradient: 'linear-gradient(to right, #0B0F2B 0%, #12163A 60%, #1A1F4D 100%)', // Brand Hero Default
     themeType: 'modern',
-    titleSize: 2.5,
+    titleSize: 1.8,
     subtitleSize: 1.1,
     imageHeight: 280,
     patternType: 'grid',
@@ -1050,9 +1050,9 @@ const App: React.FC = () => {
     overlayOpacity: 0.2,
     borderRadius: 32,
     footerText: 'اقرأ المزيد',
-    cardPadding: 60,
+    cardPadding: 40,
     cardMargin: 0,
-    elementsGap: 40,
+    elementsGap: 24,
     imageBlur: 0,
     imageBrightness: 1,
     imageGrayscale: 0,
@@ -1129,8 +1129,8 @@ const App: React.FC = () => {
     imageSepia: 0,
 
     // Glass Container Typography
-    glassValueSize: 60,
-    glassLabelSize: 13,
+    glassValueSize: 28,
+    glassLabelSize: 10,
     glassValueColor: '', // default to automatic
     glassLabelColor: '', // default to automatic
     glassValueTracking: -2,
@@ -1148,9 +1148,9 @@ const App: React.FC = () => {
     glassLabelMarginTop: 0,
     glassLabelMarginBottom: 0,
     glassTextGap: 4,
-    glassPadding: 32,
-    glassGap: 24,
-    glassRadius: 48,
+    glassPadding: 20,
+    glassGap: 16,
+    glassRadius: 24,
     glassOpacity: 0.1,
     glassBorder: 1,
     glassShadow: 40,

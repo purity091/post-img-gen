@@ -125,7 +125,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                         ${isDarkBg ? 'border-white/20' : 'border-white/40'}
                         `}
                   style={{
-                    height: '240px', // Fixed height to stabilize layout
+                    height: '160px',
                     padding: `${data.glassPadding || 32}px`,
                     borderRadius: `${data.glassRadius || 48}px`,
                     backgroundColor: isDarkBg
