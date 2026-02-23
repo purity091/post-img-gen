@@ -1,0 +1,390 @@
+﻿    </div>
+  );
+
+
+  // Theme Logic for Finance (Enhanced for Ultra Dark)
+  const isDarkBg = data.backgroundMode === 'gradient' && (
+    data.backgroundGradient.includes('#0B1120') ||
+    data.backgroundGradient.includes('#000000') ||
+    data.backgroundGradient.includes('#111827')
+  );
+
+  // Calculate Progress Ring Circle
+  const radius = 24;
+  const circumference = radius * 2 * Math.PI;
+
+  return (
+    <div className="flex-1 relative flex z-10 gap-8 h-full font-sans antialiased text-slate-800 selection:bg-indigo-500/30"
+      style={{ padding: `calc(${data.cardMargin}px + ${data.cardPadding}px)` }}
+    >
+      {/* Global Background Layer with subtle Glow */}
+      <div className="absolute inset-0 z-0" style={{ background: data.backgroundMode === 'color' ? data.backgroundColor : (data.backgroundGradient || '#F5F5F7') }}>
+        {/* Ambient Glow for Depth */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none"></div>
+      </div>
+
+      {/* MAIN DASHBOARD (Left) - 65% width */}
+      <div className={`flex-[1.9] flex flex-col gap-6 relative z-10`}>
+
+        {/* Top: Market Pulse Card (Hero) - Ultra Glass */}
+        <div className={`flex-1 relative overflow-hidden flex flex-col justify-between border shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]
+               ${isDarkBg ? 'border-white/10 text-white' : 'border-white/40 text-slate-900'} backdrop-blur-3xl`}
+          style={{
+            padding: `${(data.glassPadding || 32) * 1.5}px`, // Hero card gets slightly more scale
+            borderRadius: `${(data.glassRadius || 48) * 0.8}px`,
+            backgroundColor: isDarkBg
+              ? `rgba(255,255,255,${(data.glassOpacity || 0.1) * 2})` // Hero card slightly more opaque
+              : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.6})`,
+            borderWidth: `${data.glassBorder || 1}px`,
+            boxShadow: `0 ${(data.glassShadow || 40)}px ${data.glassShadow || 40}px -15px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.1)`
+          }}>
+
+          {/* Soft Backlight for Depth */}
+          <div className="absolute top-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full bg-gradient-to-b from-white/10 to-transparent blur-3xl pointer-events-none"></div>
+
+          <div className="flex justify-between items-start z-10 relative">
+            <div>
+              <div className={`flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full w-fit backdrop-blur-md border ${isDarkBg ? 'border-white/5' : 'border-white/30'}`}
+                style={{ backgroundColor: isDarkBg ? `rgba(255,255,255,${data.glassOpacity})` : `rgba(255,255,255,0.4)` }}>
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                <span className="text-xs font-bold uppercase tracking-widest opacity-60">Ø§Ù„Ø³ÙˆÙ‚ Ù…Ø¨Ø§Ø´Ø± (LIVE)</span>
+              </div>
+
+              {/* Massive Typography - Apple Style */}
+              <div className="flex items-baseline gap-4 mt-2 max-w-full overflow-hidden">
+                <h1 className="text-7xl font-black tracking-tighter loading-none truncate"
+                  style={{ textShadow: isDarkBg ? '0 10px 30px rgba(0,0,0,0.2)' : 'none' }}>
+                  {data.marketVal}
+                </h1>
+              </div>
+              <div className={`flex flex-col mt-2 ${isDarkBg ? 'text-emerald-400' : 'text-emerald-600'}`} style={{ gap: `${data.glassTextGap || 4}px` }}>
+                <span className="text-4xl block"
+                  style={{
+                    color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
+                    letterSpacing: `${data.glassValueTracking || -2}px`,
+                    fontWeight: data.glassValueWeight || '900',
+                    fontStyle: data.glassValueItalic ? 'italic' : 'normal',
+                    textDecoration: data.glassValueUnderline ? 'underline' : 'none',
+                    textTransform: data.glassValueCase || 'none',
+                    marginTop: `${data.glassValueMarginTop || 0}px`,
+                    marginBottom: `${data.glassValueMarginBottom || 0}px`
+                  }}>Ø³ÙˆÙ‚ Ø§Ù„Ø£Ø³Ù‡Ù… Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠ</span>
+                <span className="text-sm opacity-50 block"
+                  style={{
+                    color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
+                    letterSpacing: `${data.glassLabelTracking || 2.5}px`,
+                    fontWeight: data.glassLabelWeight || '900',
+                    fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
+                    textDecoration: data.glassLabelUnderline ? 'underline' : 'none',
+                    textTransform: data.glassLabelCase || 'none',
+                    marginTop: `${data.glassLabelMarginTop || 0}px`,
+                    marginBottom: `${data.glassLabelMarginBottom || 0}px`
+                  }}>Ù…ØªØ§Ø¨Ø¹Ø© Ø­ÙŠØ© Ù„Ù„Ù…Ø¤Ø´Ø±Ø§Øª Ø§Ù„Ù…Ø§Ù„ÙŠØ© ÙˆØ§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù„Ø­Ø¸ÙŠØ©</span>
+              </div>
+            </div>
+
+            {/* Premium 3D Glass Icon Simulation */}
+            <div className={`w-16 h-16 rounded-[1.5rem] flex-shrink-0 flex items-center justify-center shadow-2xl border-[0.5px] p-4 relative overflow-hidden transition-all duration-700 hover:rotate-3
+                     ${isDarkBg ? 'bg-white/10 border-white/20' : 'bg-white border-white/50'}`}
+              style={{
+                height: '64px',
+                backdropFilter: 'blur(20px)',
+                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.1)'
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50"></div>
+              <div className="relative z-10 w-full h-full">
+                {PRO_INDICATOR_ICONS['mkt-bull'] ? PRO_INDICATOR_ICONS['mkt-bull'](data.accentColor || '#10b981') : 'ðŸ“ˆ'}
+              </div>
+            </div>
+          </div>
+
+          {/* Advanced Glowing Area Chart with Depth */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 opacity-50 mix-blend-overlay">
+            <svg viewBox="0 0 300 100" className="w-full h-full" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="glowGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={data.accentColor} stopOpacity="0.6" />
+                  <stop offset="100%" stopColor={data.accentColor} stopOpacity="0" />
+                </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                  <feMerge>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              <path d="M0,100 L0,50 C30,45 50,60 80,40 C110,20 140,55 170,35 C200,15 230,40 260,20 L300,0 L300,100 Z" fill="url(#glowGrad)" />
+              <path d="M0,50 C30,45 50,60 80,40 C110,20 140,55 170,35 C200,15 230,40 260,20 L300,0"
+                fill="none" stroke={data.accentColor} strokeWidth="3" filter="url(#glow)" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Metrics Grid - Ultra Premium */}
+        <div className="h-44 grid grid-cols-3" style={{ gap: `${data.glassGap || 24}px` }}>
+
+          {/* Card 1: Volatility - Apple Style */}
+          <div className={`relative overflow-hidden backdrop-blur-2xl flex flex-col items-center justify-between border transition-all duration-500 hover:scale-[1.05]
+                 ${isDarkBg ? 'border-white/20 text-white shadow-[0_15px_35px_rgba(0,0,0,0.3)]' : 'border-white/40 text-slate-800 shadow-[0_15px_35px_rgba(0,0,0,0.05)]'}`}
+            style={{
+              height: '180px', // Fixed height
+              padding: `${data.glassPadding || 32}px`,
+              borderRadius: `${data.glassRadius || 40}px`, // Slightly smaller default for small cards
+              backgroundColor: isDarkBg
+                ? `rgba(255,255,255,${data.glassOpacity || 0.08})`
+                : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.6})`,
+              borderWidth: `${data.glassBorder || 1}px`,
+              boxShadow: `0 ${(data.glassShadow || 35) / 2}px ${data.glassShadow || 35}px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.1)`,
+              fontFamily: "'IBM Plex Sans Arabic', sans-serif"
+            }}>
+            <span className="opacity-30 block"
+              style={{
+                fontSize: `${(data.glassLabelSize || 13) - 1}px`,
+                color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
+                letterSpacing: `${data.glassLabelTracking || 2}px`,
+                fontWeight: data.glassLabelWeight || '900',
+                fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
+                textDecoration: data.glassLabelUnderline ? 'underline' : 'none',
+                textTransform: data.glassLabelCase || 'uppercase',
+                marginTop: `${data.glassLabelMarginTop || 0}px`,
+                marginBottom: `${data.glassLabelMarginBottom || 0}px`
+              }}>Ø¯Ø±Ø¬Ø© Ø§Ù„Ù…Ø®Ø§Ø·Ø±Ø©</span>
+            <div className="relative flex items-center justify-center py-2">
+              <svg className="w-16 h-16 transform -rotate-90" style={{ color: data.accentColor || '#6366f1' }}>
+                <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="3" fill="none" className="opacity-10" />
+                <circle cx="32" cy="32" r="28" stroke="currentColor" strokeWidth="3.5" fill="none"
+                  strokeDasharray={175} strokeDashoffset={175 - ((data.volatilityVal === 'High' ? 0.9 : data.volatilityVal === 'Med' ? 0.5 : 0.2) * 175)}
+                  strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 8px currentColor)' }} />
+              </svg>
+            </div>
+            <span className="block"
+              style={{
+                fontSize: `${(data.glassValueSize || 60) * 0.5}px`,
+                color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
+                letterSpacing: `${(data.glassValueTracking || -1) * 0.5}px`,
+                fontWeight: data.glassValueWeight || '900',
+                fontStyle: data.glassValueItalic ? 'italic' : 'normal',
+                textDecoration: data.glassValueUnderline ? 'underline' : 'none',
+                textTransform: data.glassValueCase || 'none',
+                marginTop: `${(data.glassValueMarginTop || 0) * 0.5}px`,
+                marginBottom: `${(data.glassValueMarginBottom || 0) * 0.5}px`
+              }}>{data.volatilityVal}</span>
+          </div>
+
+          {/* Card 2: Volume - Apple Style */}
+          <div className={`relative overflow-hidden backdrop-blur-2xl flex flex-col items-center justify-between border transition-all duration-500 hover:scale-[1.05]
+                 ${isDarkBg ? 'border-white/20 text-white shadow-[0_15px_35px_rgba(0,0,0,0.3)]' : 'border-white/40 text-slate-800 shadow-[0_15px_35px_rgba(0,0,0,0.05)]'}`}
+            style={{
+              height: '180px', // Fixed height
+              padding: `${data.glassPadding || 32}px`,
+              borderRadius: `${data.glassRadius || 40}px`,
+              backgroundColor: isDarkBg
+                ? `rgba(255,255,255,${data.glassOpacity || 0.08})`
+                : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.6})`,
+              borderWidth: `${data.glassBorder || 1}px`,
+              boxShadow: `0 ${(data.glassShadow || 35) / 2}px ${data.glassShadow || 35}px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.1)`,
+              fontFamily: "'IBM Plex Sans Arabic', sans-serif"
+            }}>
+            <span className="opacity-30 block"
+              style={{
+                fontSize: `${(data.glassLabelSize || 13) - 1}px`,
+                color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
+                letterSpacing: `${data.glassLabelTracking || 2}px`,
+                fontWeight: data.glassLabelWeight || '900',
+                fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
+                textDecoration: data.glassLabelUnderline ? 'underline' : 'none',
+                textTransform: data.glassLabelCase || 'uppercase',
+                marginTop: `${data.glassLabelMarginTop || 0}px`,
+                marginBottom: `${data.glassLabelMarginBottom || 0}px`
+              }}>Ø­Ø¬Ù… Ø§Ù„Ø³ÙŠÙˆÙ„Ø©</span>
+            <div className="flex items-end gap-1.5 h-10 w-full justify-center py-1">
+              {[45, 75, 55, 90, 60].map((h, i) => (
+                <div key={i} className="flex-1 rounded-full bg-current shadow-[0_4px_10px_rgba(0,0,0,0.2)]"
+                  style={{ height: `${h}%`, opacity: 0.2 + (i * 0.15), color: data.accentColor || '#6366f1' }}></div>
+              ))}
+            </div>
+            <div className="flex items-baseline gap-1">
+              <span className="block"
+                style={{
+                  fontSize: `${(data.glassValueSize || 60) * 0.5}px`,
+                  color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
+                  letterSpacing: `${(data.glassValueTracking || -1) * 0.5}px`,
+                  fontWeight: data.glassValueWeight || '900',
+                  fontStyle: data.glassValueItalic ? 'italic' : 'normal',
+                  textDecoration: data.glassValueUnderline ? 'underline' : 'none',
+                  textTransform: data.glassValueCase || 'none',
+                  marginTop: `${(data.glassValueMarginTop || 0) * 0.5}px`,
+                  marginBottom: `${(data.glassValueMarginBottom || 0) * 0.5}px`
+                }}>{data.volumeVal}</span>
+            </div>
+          </div>
+
+          {/* Card 3: Sentiment - Apple Style */}
+          <div className={`relative overflow-hidden backdrop-blur-2xl flex flex-col items-center justify-between border transition-all duration-500 hover:scale-[1.05]
+                 ${isDarkBg ? 'border-white/20 text-white shadow-[0_15px_35px_rgba(0,0,0,0.3)]' : 'border-white/40 text-slate-800 shadow-[0_15px_35px_rgba(0,0,0,0.05)]'}`}
+            style={{
+              height: '180px', // Fixed height for consistency
+              padding: `${data.glassPadding || 32}px`,
+              borderRadius: `${data.glassRadius || 40}px`,
+              backgroundColor: isDarkBg
+                ? `rgba(255,255,255,${data.glassOpacity || 0.08})`
+                : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.6})`,
+              borderWidth: `${data.glassBorder || 1}px`,
+              boxShadow: `0 ${(data.glassShadow || 35) / 2}px ${data.glassShadow || 35}px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.1)`,
+              fontFamily: "'IBM Plex Sans Arabic', sans-serif"
+            }}>
+            <span className="opacity-30 block"
+              style={{
+                fontSize: `${(data.glassLabelSize || 13) - 1}px`,
+                color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
+                letterSpacing: `${data.glassLabelTracking || 2}px`,
+                fontWeight: data.glassLabelWeight || '900',
+                fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
+                textDecoration: data.glassLabelUnderline ? 'underline' : 'none',
+                textTransform: data.glassLabelCase || 'uppercase',
+                marginTop: `${data.glassLabelMarginTop || 0}px`,
+                marginBottom: `${data.glassLabelMarginBottom || 0}px`
+              }}>Ù…Ø¤Ø´Ø± Ø§Ù„Ù…Ø²Ø§Ø¬</span>
+            <div className="w-14 h-14 flex items-center justify-center rounded-3xl border border-white/20 shadow-2xl relative overflow-hidden"
+              style={{ backgroundColor: `${data.accentColor}15` }}>
+              <div style={{ color: data.accentColor, transform: `rotate(${data.sentimentVal.includes('Buy') || data.sentimentVal.includes('Ø¥ÙŠØ¬Ø§Ø¨ÙŠØ©') ? '-45deg' : '45deg'})`, transition: 'transform 0.8s' }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+                  <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                </svg>
+              </div>
+            </div>
+            <span className="px-4 py-2 rounded-xl bg-white/10 border border-white/10 backdrop-blur-md text-center w-full truncate block"
+              style={{
+                fontSize: `${(data.glassLabelSize || 13) * 1.2}px`,
+                color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
+                letterSpacing: '0.1em',
+                fontWeight: data.glassValueWeight || '900',
+                fontStyle: data.glassValueItalic ? 'italic' : 'normal',
+                textDecoration: data.glassValueUnderline ? 'underline' : 'none',
+                textTransform: data.glassValueCase || 'none',
+                marginTop: `${(data.glassValueMarginTop || 0) * 0.8}px`,
+                marginBottom: `${(data.glassValueMarginBottom || 0) * 0.8}px`
+              }}>{data.sentimentVal}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT SIDEBAR (Identity & Context) - 35% */}
+      <div className="flex-1 flex flex-col h-full gap-6 z-10">
+
+        {/* Identity Card - Ultra Clean */}
+        <div className={`shadow-2xl border flex-[2] flex flex-col items-center text-center justify-center relative overflow-hidden backdrop-blur-3xl
+              ${isDarkBg ? 'border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]' : 'border-white/50 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.1)]'}`}
+          style={{
+            minHeight: '440px',
+            padding: `${(data.glassPadding || 32) * 1.25}px`,
+            borderRadius: `${(data.glassRadius || 48) * 0.8}px`,
+            backgroundColor: isDarkBg
+              ? `rgba(0,0,0,${(data.glassOpacity || 0.1) * 2})` // Identity card usually darker in dark mode
+              : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.6})`,
+            borderWidth: `${data.glassBorder || 1}px`,
+          }}>
+
+          {/* Logo - Glass Effect */}
+          <div className={`mb-8 p-3 rounded-[1.5rem] flex-shrink-0
+                  ${data.logoShadow ? 'shadow-[0_15px_35px_-5px_rgba(0,0,0,0.2)]' : ''}
+                  ${data.logoGlass ? 'backdrop-blur-xl bg-gradient-to-br from-white/40 to-white/10 border border-white/30' : ''}`}
+            style={{ width: data.logoSize, height: data.logoSize, borderRadius: data.logoRadius }}>
+            {data.logoUrl ? (
+              <img src={data.logoUrl} className="object-cover w-full h-full shadow-inner" style={{ borderRadius: data.logoRadius - 4 }} />
+            ) : data.logoType ? (
+              <div className="w-full h-full p-2">{PRO_LOGOS.find(l => l.id === data.logoType)?.render(data.accentColor)}</div>
+            ) : (
+              <div className="w-full h-full p-2 bg-indigo-50 alpha-10 rounded-xl flex items-center justify-center text-indigo-500 font-black text-4xl">
+                {data.headerTitle?.[0] || 'A'}
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-2 mb-8 w-full overflow-hidden">
+            <h2 className={`text-2xl font-black tracking-tight ${isDarkBg ? 'text-white' : 'text-slate-900'} truncate`}>{data.headerTitle}</h2>
+            <h3 className={`text-sm font-medium tracking-wide opacity-60 uppercase ${isDarkBg ? 'text-slate-300' : 'text-slate-500'} truncate`}>{data.headerSubtitle}</h3>
+          </div>
+
+          <div className={`w-16 h-[2px] rounded-full mb-8 flex-shrink-0 ${isDarkBg ? 'bg-white/20' : 'bg-slate-200'}`}></div>
+
+          <div className="w-full text-right space-y-6 overflow-hidden">
+            <div className="group">
+              <span className="text-[10px] font-bold opacity-40 uppercase tracking-[0.2em] block mb-2">Ø¹Ù†ÙˆØ§Ù† Ø§Ù„ØªØ­Ù„ÙŠÙ„</span>
+              <p className={`text-lg font-bold leading-snug ${isDarkBg ? 'text-white' : 'text-slate-800'} line-clamp-2`}>{data.title}</p>
+            </div>
+            {data.showSubtitle && (
+              <div>
+                <span className="text-[10px] font-bold opacity-40 uppercase tracking-[0.2em] block mb-2">Ù…Ù„Ø®Øµ Ø§Ù„ØªÙ‚Ø±ÙŠØ±</span>
+                <p className={`text-sm leading-relaxed opacity-70 font-medium ${isDarkBg ? 'text-slate-300' : 'text-slate-600'} line-clamp-3`}>{data.subtitle}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Footer Mini - Glass Ticker (Floating) */}
+        <div className={`flex items-center justify-between shadow-2xl overflow-hidden relative backdrop-blur-xl border-[0.5px]
+             ${isDarkBg ? 'border-white/10 text-white' : 'border-white/40 text-slate-900'}`}
+          style={{
+            height: '64px',
+            paddingLeft: `${data.glassPadding || 32}px`,
+            paddingRight: `${data.glassPadding || 32}px`,
+            borderRadius: `${(data.glassRadius || 48) * 0.5}px`, // Ticker gets smaller radius
+            backgroundColor: isDarkBg
+              ? `rgba(255,255,255,${(data.glassOpacity || 0.1) * 1.5})`
+              : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.75})`,
+            borderWidth: `${data.glassBorder || 1}px`,
+          }}>
+          <div className="flex items-center gap-4">
+            <div className="relative flex h-3 w-3">
+
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </div>
+            <div className="flex flex-col leading-none gap-0.5">
+              <span className="text-[10px] font-bold opacity-60 uppercase tracking-widest">Ø§Ù„Ø­Ø§Ù„Ø©</span>
+              <span className="font-bold text-xs tracking-wide">Ø§Ù„Ø³ÙˆÙ‚ Ù…ÙØªÙˆØ­</span>
+            </div>
+          </div>
+          <span className="font-mono text-xs opacity-60 bg-black/5 px-3 py-1.5 rounded-lg border border-black/5">
+            {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+// --- Helper Components & Renderers ---
+
+const getFilterString = () => `blur(${data.imageBlur}px) brightness(${data.imageBrightness}) contrast(${data.imageContrast}) saturate(${data.imageSaturation}) sepia(${data.imageSepia}) grayscale(${data.imageGrayscale})`;
+
+const renderVisualSection = () => (
+  <div
+    className="relative mt-8"
+    style={{
+      marginLeft: data.imageFullWidth ? `-${data.cardPadding + 48}px` : `${data.imageMarginLeft}px`, // +48 compensates for p-12 padding in classic
+      marginRight: data.imageFullWidth ? `-${data.cardPadding + 48}px` : `${data.imageMarginRight}px`,
+      marginTop: `${data.imageMarginTop}px`,
+      marginBottom: `${data.imageMarginBottom}px`,
+      paddingTop: `${data.imagePaddingTop}px`,
+      paddingBottom: `${data.imagePaddingBottom}px`,
+      paddingLeft: `${data.imagePaddingLeft}px`,
+      paddingRight: `${data.imagePaddingRight}px`,
+      borderRadius: `${data.imageBorderRadius}px`,
+      borderWidth: `${data.imageBorderWidth}px`,
+      borderColor: data.imageBorderColor,
+      boxShadow: data.imageShadow ? '0 10px 40px -10px rgba(0,0,0,0.3)' : 'none',
+      overflow: 'hidden',
+      backgroundColor: data.backgroundMode === 'color' ? data.backgroundColor : 'transparent'
+    }}
+  >
+    <div className="relative overflow-hidden w-full" style={{ height: `${data.imageHeight}px` }}>
+      <div className="w-full h-full"
+        style={{
+          backgroundImage: `url(${data.backgroundMode === 'color' ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' : data.imageUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: `${data.imagePositionX}% ${data.imagePositionY}%`,
+          filter: getFilterString()
