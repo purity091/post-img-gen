@@ -188,65 +188,98 @@ const MASTER_INDICATORS = [
 ] as const;
 
 const PROFESSIONAL_THEMES = [
+  // --- DARK MODE (5 THEMES) ---
   {
-    id: 'midnight-executive',
-    name: 'Midnight Executive',
-    backgroundGradient: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)',
-    accentColor: '#38bdf8', labelColor: '#cbd5e1', titleColor: '#ffffff', borderColor: '#334155'
+    id: 'dark-midnight',
+    name: 'Midnight Executive (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #020617 0%, #0f172a 100%)', // Very deep slate/black
+    accentColor: '#38bdf8', // Light blue accent
+    labelColor: '#94a3b8',
+    titleColor: '#f8fafc',
+    borderColor: '#1e293b'
   },
   {
-    id: 'brand-light',
-    name: 'Surface Clean',
-    backgroundGradient: 'linear-gradient(to right, #FFFFFF 0%, #F5F7FB 100%)',
-    accentColor: '#4f46e5', labelColor: '#6B7280', titleColor: '#0f172a', borderColor: '#E6EAF0'
+    id: 'dark-obsidian',
+    name: 'Obsidian Minimal (Dark)',
+    backgroundGradient: 'linear-gradient(180deg, #000000 0%, #0a0a0a 100%)', // Pure black minimal
+    accentColor: '#fbbf24', // Amber/Gold accent
+    labelColor: '#a3a3a3',
+    titleColor: '#ffffff',
+    borderColor: '#171717'
   },
   {
-    id: 'obsidian-minimal',
-    name: 'Obsidian Minimal',
-    backgroundGradient: 'linear-gradient(to right, #000000, #111111, #000000)',
-    accentColor: '#facc15', labelColor: '#a3a3a3', titleColor: '#ffffff', borderColor: '#262626'
+    id: 'dark-emerald',
+    name: 'Deep Emerald (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #022c22 0%, #064e3b 100%)', // Deep forest green
+    accentColor: '#34d399', // Mint green accent
+    labelColor: '#a7f3d0',
+    titleColor: '#f0fdf4',
+    borderColor: '#065f46'
   },
   {
-    id: 'emerald-prestige',
-    name: 'Emerald Prestige',
-    backgroundGradient: 'linear-gradient(to right, #064e3b, #065f46, #022c22)',
-    accentColor: '#34d399', labelColor: '#a7f3d0', titleColor: '#ffffff', borderColor: '#065f46'
+    id: 'dark-royal',
+    name: 'Royal Velvet (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%)', // Deep indigo/purple
+    accentColor: '#a78bfa', // Very light purple accent
+    labelColor: '#c4b5fd',
+    titleColor: '#f5f3ff',
+    borderColor: '#4c1d95'
   },
   {
-    id: 'apple-titanium',
-    name: 'Titanium Pro',
-    backgroundGradient: 'linear-gradient(to right, #47474a 0%, #88888b 50%, #47474a 100%)',
-    accentColor: '#d6d3d1', labelColor: '#e5e7eb', titleColor: '#ffffff', borderColor: '#52525b'
+    id: 'dark-ocean',
+    name: 'Abyssal Ocean (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #082f49 0%, #0c4a6e 100%)', // Deep sea blue
+    accentColor: '#38bdf8', // Cerulean accent
+    labelColor: '#7dd3fc',
+    titleColor: '#f0f9ff',
+    borderColor: '#075985'
+  },
+
+  // --- LIGHT MODE (5 THEMES) ---
+  {
+    id: 'light-surface',
+    name: 'Surface Clean (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)', // Crisp almost-white
+    accentColor: '#2563eb', // Strong corporate blue
+    labelColor: '#475569',
+    titleColor: '#0f172a',
+    borderColor: '#e2e8f0'
   },
   {
-    id: 'human-calm',
-    name: 'Calm Humanity',
-    backgroundGradient: 'linear-gradient(90deg, #FDE6D3 0%, #FAF7F3 45%, #FFFFFF 70%)',
-    accentColor: '#ea580c', labelColor: '#78716c', titleColor: '#292524', borderColor: '#e7e5e4'
+    id: 'light-human',
+    name: 'Calm Sand (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%)', // Warm, off-white sand
+    accentColor: '#ea580c', // Burnt orange accent
+    labelColor: '#57534e',
+    titleColor: '#1c1917',
+    borderColor: '#e7e5e4'
   },
   {
-    id: 'dark-navy',
-    name: 'Presidential Navy',
-    backgroundGradient: 'linear-gradient(90deg, #0B1120 0%, #020617 45%, #000000 100%)',
-    accentColor: '#00E5C4', labelColor: '#e0f2fe', titleColor: '#FFFFFF', borderColor: '#0b1120'
+    id: 'light-mint',
+    name: 'Fresh Mint (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%)', // Very soft teal/mint
+    accentColor: '#0d9488', // Deep teal accent
+    labelColor: '#115e59',
+    titleColor: '#042f2e',
+    borderColor: '#99f6e4'
   },
   {
-    id: 'mod-slate',
-    name: 'Corporate Slate',
-    backgroundGradient: 'linear-gradient(90deg, #E2E8F0 0%, #F1F5F9 45%, #FFFFFF 70%)',
-    accentColor: '#0284c7', labelColor: '#475569', titleColor: '#0f172a', borderColor: '#cbd5e1'
+    id: 'light-slate',
+    name: 'Corporate Slate (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%)', // Cool gray
+    accentColor: '#0369a1', // Steady sky blue accent
+    labelColor: '#334155',
+    titleColor: '#0f172a',
+    borderColor: '#94a3b8'
   },
   {
-    id: 'lux-champagne',
-    name: 'Champagne Silk',
-    backgroundGradient: 'linear-gradient(90deg, #F7E7CE 0%, #FAF5EF 45%, #FFFFFF 70%)',
-    accentColor: '#BFA05F', labelColor: '#78716c', titleColor: '#451a03', borderColor: '#e7e5e4'
-  },
-  {
-    id: 'cyber-neon',
-    name: 'Cyber Noir',
-    backgroundGradient: 'linear-gradient(90deg, #0f0c29, #302b63, #24243e)',
-    accentColor: '#00f260', labelColor: '#c084fc', titleColor: '#ffffff', borderColor: '#7c3aed'
+    id: 'light-champagne',
+    name: 'Champagne Silk (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #fdfbf7 0%, #f3ede2 100%)', // Very soft luxury beige
+    accentColor: '#b45309', // Deep bronze/gold accent
+    labelColor: '#78716c',
+    titleColor: '#292524',
+    borderColor: '#d6d3d1'
   }
 ];
 

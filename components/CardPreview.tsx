@@ -92,36 +92,19 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
           </div>
 
           {/* Text Side (The Message) - Now order-1 on mobile for hierarchy */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col justify-center relative z-10 order-1"
-            style={{ padding: `${data.cardPadding}px` }}
+          <div className="col-span-12 lg:col-span-7 flex flex-col justify-start relative z-10 order-1"
+            style={{ padding: `${data.cardPadding}px`, paddingTop: `${Math.max(data.cardPadding, 48)}px` }}
           >
-            <div className={`relative backdrop-blur-2xl transition-all duration-700 hover:scale-[1.01] overflow-hidden shadow-lg flex flex-col gap-8 w-full
-                  ${isDarkBg ? 'border-white/10 hover:border-white/20' : 'border-slate-200/50 hover:border-slate-300'}
+            <div className={`flex flex-col gap-8 w-full
                   ${data.textAlign === 'center' ? 'items-center' : data.textAlign === 'left' ? 'items-start' : 'items-end'}`}
-              style={{
-                padding: `48px`, // Generous padding for the text container
-                borderRadius: `${Math.min(data.glassRadius ?? 16, 24) * 1.5}px`, // Scaled radius to match proportions
-                backgroundColor: isDarkBg
-                  ? `rgba(255,255,255,${data.glassOpacity || 0.05})`
-                  : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.5})`,
-                borderWidth: `${data.glassBorder || 1}px`,
-                borderStyle: 'solid',
-                boxShadow: isDarkBg
-                  ? '0 20px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.05)'
-                  : '0 20px 40px -10px rgba(0,0,0,0.05), inset 0 1px 0 0 rgba(255,255,255,0.4)',
-              }}
             >
-              {/* Subtle Ambient Light Effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
-                style={{ background: `radial-gradient(circle at top right, ${data.accentColor}, transparent 80%)` }}></div>
-
               {/* Brand Identity (The Signature) - MOVED TO OPPOSITE SIDE (LEFT) per request */}
               <div className="opacity-90 w-full flex justify-start relative z-10">
                 {renderHeader(isDarkBg)}
               </div>
 
               {/* Main Typography (The Headline) */}
-              <div className="w-full relative z-10">
+              <div className="w-full relative z-10 mt-4">
                 {renderKeyContent(isDarkBg)}
               </div>
 
@@ -129,8 +112,8 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
           </div>
 
           {/* Visual Side (The Data) - Now order-2 on mobile */}
-          <div className="col-span-12 lg:col-span-5 relative z-10 order-2 flex flex-col justify-center"
-            style={{ padding: `${data.cardPadding}px` }}
+          <div className="col-span-12 lg:col-span-5 relative z-10 order-2 flex flex-col justify-start"
+            style={{ padding: `${data.cardPadding}px`, paddingTop: `${Math.max(data.cardPadding, 48)}px` }}
           >
 
             {/* Apple-style Soft Grid */}
@@ -139,8 +122,8 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
 
               {data.indicators.slice(0, 4).map((ind, i) => (
                 <div key={ind.id}
-                  className={`relative group backdrop-blur-2xl transition-all duration-700 hover:scale-[1.02] flex flex-col justify-between overflow-hidden shadow-lg
-                        ${isDarkBg ? 'border-white/10 hover:border-white/20' : 'border-slate-200/50 hover:border-slate-300'}`}
+                  className={`relative backdrop-blur-2xl flex flex-col justify-between overflow-hidden shadow-lg
+                        ${isDarkBg ? 'border-white/10' : 'border-slate-200/50'}`}
                   style={{
                     aspectRatio: '1 / 1', // Perfect square for layout balance
                     minHeight: '160px',
@@ -157,10 +140,6 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                     fontFamily: "'IBM Plex Sans Arabic', sans-serif"
                   }}
                 >
-                  {/* Subtle Gradient Hover Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
-                    style={{ background: `radial-gradient(circle at top right, ${data.accentColor}, transparent 70%)` }}></div>
-
                   {/* Icon & Trend Header */}
                   <div className="flex justify-between items-start z-10 w-full mb-4">
                     <div className="w-12 h-12 flex items-center justify-center shadow-sm relative overflow-hidden shrink-0"
@@ -179,7 +158,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                     </div>
 
                     {ind.trend && (
-                      <div className={`flex items-center justify-center p-1.5 rounded-full backdrop-blur-md shadow-sm border transition-colors
+                      <div className={`flex items-center justify-center p-1.5 rounded-full backdrop-blur-md shadow-sm border
                           ${ind.trend === 'up' ? (isDarkBg ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-emerald-50 border-emerald-200 text-emerald-600') :
                           (isDarkBg ? 'bg-rose-500/10 border-rose-500/20 text-rose-400' : 'bg-rose-50 border-rose-200 text-rose-600')}`}
                       >
@@ -223,7 +202,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
               ))}
 
               {data.indicators.length < 4 && Array.from({ length: 4 - data.indicators.length }).map((_, i) => (
-                <div key={`empty-${i}`} className={`shadow-sm border transition-all ${isDarkBg ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'}`}
+                <div key={`empty-${i}`} className={`shadow-sm border ${isDarkBg ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'}`}
                   style={{ borderRadius: `${Math.min(data.glassRadius ?? 16, 24)}px`, aspectRatio: '1 / 1' }}></div>
               ))}
             </div>
