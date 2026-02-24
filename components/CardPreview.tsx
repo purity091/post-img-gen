@@ -172,7 +172,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                           color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
                           textShadow: isDarkBg ? '0 4px 15px rgba(0,0,0,0.3)' : 'none',
                           fontSize: `${data.glassValueSize || 60}px`,
-                          letterSpacing: `${data.glassValueTracking || -2}px`,
+                          letterSpacing: `${data.glassValueTracking ?? -2}px`,
                           fontWeight: data.glassValueWeight || '900',
                           fontStyle: data.glassValueItalic ? 'italic' : 'normal',
                           textDecoration: data.glassValueUnderline ? 'underline' : 'none',
@@ -186,7 +186,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                         style={{
                           fontSize: `${data.glassLabelSize || 13}px`,
                           color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
-                          letterSpacing: `${data.glassLabelTracking || 2.5}px`,
+                          letterSpacing: `${data.glassLabelTracking ?? 2.5}px`,
                           fontWeight: data.glassLabelWeight || '900',
                           fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
                           textDecoration: data.glassLabelUnderline ? 'underline' : 'none',
@@ -494,7 +494,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                 <span className="text-2xl block"
                   style={{
                     color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
-                    letterSpacing: `${data.glassValueTracking || -1}px`,
+                    letterSpacing: `${data.glassValueTracking ?? -1}px`,
                     fontWeight: data.glassValueWeight || '900',
                     fontStyle: data.glassValueItalic ? 'italic' : 'normal',
                     textDecoration: data.glassValueUnderline ? 'underline' : 'none',
@@ -505,7 +505,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                 <span className="text-xs opacity-50 tracking-widest block"
                   style={{
                     color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
-                    letterSpacing: `${data.glassLabelTracking || 2}px`,
+                    letterSpacing: `${data.glassLabelTracking ?? 2}px`,
                     fontWeight: data.glassLabelWeight || '700',
                     fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
                     textDecoration: data.glassLabelUnderline ? 'underline' : 'none',

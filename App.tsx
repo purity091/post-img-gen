@@ -1032,8 +1032,8 @@ const App: React.FC = () => {
     backgroundColor: '#0B0F2B',
     backgroundGradient: 'linear-gradient(to right, #0B0F2B 0%, #12163A 60%, #1A1F4D 100%)', // Brand Hero Default
     themeType: 'modern',
-    titleSize: 1.8,
-    subtitleSize: 1.1,
+    titleSize: 1.5,
+    subtitleSize: 1.0,
     imageHeight: 280,
     patternType: 'grid',
     patternOpacity: 0.05,
@@ -1133,8 +1133,8 @@ const App: React.FC = () => {
     glassLabelSize: 10,
     glassValueColor: '', // default to automatic
     glassLabelColor: '', // default to automatic
-    glassValueTracking: -2,
-    glassLabelTracking: 2.5,
+    glassValueTracking: 0,
+    glassLabelTracking: 0,
     glassValueWeight: '900',
     glassLabelWeight: '900',
     glassValueItalic: true,
@@ -1157,8 +1157,8 @@ const App: React.FC = () => {
 
     fontFamily: "'IBM Plex Sans Arabic', sans-serif",
     titleWeight: '900',
-    lineHeight: 1.2,
-    letterSpacing: -0.5,
+    lineHeight: 1.5,
+    letterSpacing: 0,
     textAlign: 'right',
     titleItalic: false,
     titleUnderline: false,
