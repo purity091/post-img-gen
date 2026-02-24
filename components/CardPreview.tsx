@@ -127,7 +127,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                   style={{
                     height: '160px',
                     padding: `${data.glassPadding || 32}px`,
-                    borderRadius: `${data.glassRadius || 48}px`,
+                    borderRadius: `${data.glassRadius ?? 12}px`,
                     backgroundColor: isDarkBg
                       ? `rgba(255,255,255,${data.glassOpacity || 0.08})`
                       : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.6})`,
@@ -141,7 +141,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                   <div className="flex justify-between items-start">
                     <div className="w-14 h-14 flex items-center justify-center p-3.5"
                       style={{
-                        borderRadius: `${(data.glassRadius || 48) * 0.5}px`,
+                        borderRadius: `${data.glassRadius ?? 12}px`,
                         backgroundColor: 'transparent',
                         color: data.accentColor || '#6366f1'
                       }}
@@ -171,9 +171,9 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                         style={{
                           color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
                           textShadow: isDarkBg ? '0 4px 15px rgba(0,0,0,0.3)' : 'none',
-                          fontSize: `${data.glassValueSize || 60}px`,
-                          letterSpacing: `${data.glassValueTracking ?? -2}px`,
-                          fontWeight: data.glassValueWeight || '900',
+                          fontSize: `${data.glassValueSize || 28}px`,
+                          letterSpacing: `${data.glassValueTracking ?? 0}px`,
+                          fontWeight: data.glassValueWeight || '700',
                           fontStyle: data.glassValueItalic ? 'italic' : 'normal',
                           textDecoration: data.glassValueUnderline ? 'underline' : 'none',
                           textTransform: data.glassValueCase || 'none',
@@ -184,10 +184,10 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                       >{ind.value}</span>
                       <span className="opacity-40 block"
                         style={{
-                          fontSize: `${data.glassLabelSize || 13}px`,
+                          fontSize: `${data.glassLabelSize || 10}px`,
                           color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
-                          letterSpacing: `${data.glassLabelTracking ?? 2.5}px`,
-                          fontWeight: data.glassLabelWeight || '900',
+                          letterSpacing: `${data.glassLabelTracking ?? 0}px`,
+                          fontWeight: data.glassLabelWeight || '600',
                           fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
                           textDecoration: data.glassLabelUnderline ? 'underline' : 'none',
                           textTransform: data.glassLabelCase || 'uppercase',
@@ -200,7 +200,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
               ))}
 
               {data.indicators.length < 4 && Array.from({ length: 4 - data.indicators.length }).map((_, i) => (
-                <div key={`empty-${i}`} className={`rounded-[2rem] shadow-sm border ${isDarkBg ? 'bg-white/5 border-white/10' : 'bg-white/30 border-white/20'}`}></div>
+                <div key={`empty-${i}`} className={`shadow-sm border ${isDarkBg ? 'bg-white/5 border-white/10' : 'bg-white/30 border-white/20'}`} style={{ borderRadius: `${data.glassRadius ?? 12}px` }}></div>
               ))}
             </div>
           </div>
