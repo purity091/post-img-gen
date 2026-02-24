@@ -121,37 +121,50 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
 
               {data.indicators.slice(0, 4).map((ind, i) => (
                 <div key={ind.id}
-                  className={`backdrop-blur-2xl shadow-2xl border flex flex-col justify-between transition-all duration-500 hover:scale-[1.02] overflow-hidden
-                        ${isDarkBg ? 'border-white/20' : 'border-white/40'}
-                        `}
+                  className={`relative group backdrop-blur-2xl transition-all duration-700 hover:scale-[1.02] flex flex-col justify-between overflow-hidden shadow-lg
+                        ${isDarkBg ? 'border-white/10 hover:border-white/20' : 'border-slate-200/50 hover:border-slate-300'}`}
                   style={{
-                    height: '160px',
-                    padding: `${data.glassPadding || 32}px`,
-                    borderRadius: `${data.glassRadius ?? 12}px`,
+                    aspectRatio: '1 / 1', // Perfect square for layout balance
+                    minHeight: '160px',
+                    padding: `${Math.min(data.glassPadding || 20, 24)}px`, // Clamp maximum padding to 24px
+                    borderRadius: `${Math.min(data.glassRadius ?? 16, 24)}px`, // Clamp max radius to 24px
                     backgroundColor: isDarkBg
-                      ? `rgba(255,255,255,${data.glassOpacity || 0.08})`
-                      : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.6})`,
+                      ? `rgba(255,255,255,${data.glassOpacity || 0.05})`
+                      : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.5})`, // Softer light bg
                     borderWidth: `${data.glassBorder || 1}px`,
-                    boxShadow: `0 ${(data.glassShadow || 40) / 2}px ${data.glassShadow || 40}px -10px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,255,0.1)`,
+                    borderStyle: 'solid',
+                    boxShadow: isDarkBg
+                      ? '0 20px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.05)'
+                      : '0 20px 40px -10px rgba(0,0,0,0.05), inset 0 1px 0 0 rgba(255,255,255,0.4)',
                     fontFamily: "'IBM Plex Sans Arabic', sans-serif"
                   }}
                 >
+                  {/* Subtle Gradient Hover Effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: `radial-gradient(circle at top right, ${data.accentColor}, transparent 70%)` }}></div>
 
-                  {/* Icon Wrapper - Apple Glass Style */}
-                  <div className="flex justify-between items-start">
-                    <div className="w-14 h-14 flex items-center justify-center p-3.5"
+                  {/* Icon & Trend Header */}
+                  <div className="flex justify-between items-start z-10 w-full mb-4">
+                    <div className="w-12 h-12 flex items-center justify-center shadow-sm relative overflow-hidden shrink-0"
                       style={{
-                        borderRadius: `${data.glassRadius ?? 12}px`,
-                        backgroundColor: 'transparent',
-                        color: data.accentColor || '#6366f1'
+                        borderRadius: `${Math.min((data.glassRadius ?? 16), 24) * 0.4}px`, // Slight curve for icon
+                        backgroundColor: isDarkBg ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.03)',
+                        color: data.accentColor || '#6366f1',
+                        border: isDarkBg ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(0,0,0,0.05)'
                       }}
                     >
-                      {PRO_INDICATOR_ICONS[ind.id] ? PRO_INDICATOR_ICONS[ind.id](data.accentColor || '#6366f1') : ind.icon}
+                      {/* Inner Glass Glow */}
+                      <div className="absolute inset-0 opacity-20" style={{ background: `linear-gradient(135deg, ${data.accentColor}, transparent)` }}></div>
+                      <div className="relative z-10 w-6 h-6">
+                        {PRO_INDICATOR_ICONS[ind.id] ? PRO_INDICATOR_ICONS[ind.id](data.accentColor || '#6366f1') : ind.icon}
+                      </div>
                     </div>
 
                     {ind.trend && (
-                      <div className={`trend-badge ${ind.trend === 'up' ? 'trend-up' : 'trend-down'}`}
-                        style={{ opacity: 0.8 + (data.glassOpacity * 2) }}>
+                      <div className={`flex items-center justify-center p-1.5 rounded-full backdrop-blur-md shadow-sm border transition-colors
+                          ${ind.trend === 'up' ? (isDarkBg ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-emerald-50 border-emerald-200 text-emerald-600') :
+                          (isDarkBg ? 'bg-rose-500/10 border-rose-500/20 text-rose-400' : 'bg-rose-50 border-rose-200 text-rose-600')}`}
+                      >
                         {ind.trend === 'up' ? (
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
                             <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
@@ -165,34 +178,26 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
                     )}
                   </div>
 
-                  <div className="mt-auto">
-                    <div className="flex flex-col" style={{ gap: `${data.glassTextGap || 4}px` }}>
-                      <span className="block"
+                  {/* Info Text */}
+                  <div className="mt-auto z-10 w-full">
+                    <div className="flex flex-col items-start text-right w-full" style={{ gap: `${Math.min(data.glassTextGap || 4, 8)}px` }}>
+                      <span className="block w-full leading-tight font-black"
                         style={{
-                          color: data.glassValueColor || (isDarkBg ? 'white' : data.titleColor || '#0f172a'),
-                          textShadow: isDarkBg ? '0 4px 15px rgba(0,0,0,0.3)' : 'none',
-                          fontSize: `${data.glassValueSize || 28}px`,
-                          letterSpacing: `${data.glassValueTracking ?? 0}px`,
-                          fontWeight: data.glassValueWeight || '700',
-                          fontStyle: data.glassValueItalic ? 'italic' : 'normal',
-                          textDecoration: data.glassValueUnderline ? 'underline' : 'none',
-                          textTransform: data.glassValueCase || 'none',
-                          marginTop: `${data.glassValueMarginTop || 0}px`,
-                          marginBottom: `${data.glassValueMarginBottom || 0}px`,
-                          lineHeight: '1'
+                          color: data.glassValueColor || (isDarkBg ? '#ffffff' : data.titleColor || '#0f172a'),
+                          textShadow: isDarkBg ? '0 2px 10px rgba(0,0,0,0.5)' : 'none',
+                          fontSize: `${Math.min(data.glassValueSize || 24, 28)}px`, // Clamp sizes so they don't break layout
+                          letterSpacing: '0px', // Prevent negative tracking breakages natively
+                          fontStyle: 'normal',
+                          textDecoration: 'none',
                         }}
                       >{ind.value}</span>
-                      <span className="opacity-40 block"
+                      <span className="opacity-70 block w-full leading-snug font-semibold"
                         style={{
-                          fontSize: `${data.glassLabelSize || 10}px`,
-                          color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#64748b'),
-                          letterSpacing: `${data.glassLabelTracking ?? 0}px`,
-                          fontWeight: data.glassLabelWeight || '600',
-                          fontStyle: data.glassLabelItalic ? 'italic' : 'normal',
-                          textDecoration: data.glassLabelUnderline ? 'underline' : 'none',
-                          textTransform: data.glassLabelCase || 'uppercase',
-                          marginTop: `${data.glassLabelMarginTop || 0}px`,
-                          marginBottom: `${data.glassLabelMarginBottom || 0}px`
+                          fontSize: `${Math.min(data.glassLabelSize || 11, 13)}px`,
+                          color: data.glassLabelColor || (isDarkBg ? '#94a3b8' : '#475569'),
+                          letterSpacing: '0px',
+                          fontStyle: 'normal',
+                          textDecoration: 'none',
                         }}>{ind.label}</span>
                     </div>
                   </div>
@@ -200,7 +205,8 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
               ))}
 
               {data.indicators.length < 4 && Array.from({ length: 4 - data.indicators.length }).map((_, i) => (
-                <div key={`empty-${i}`} className={`shadow-sm border ${isDarkBg ? 'bg-white/5 border-white/10' : 'bg-white/30 border-white/20'}`} style={{ borderRadius: `${data.glassRadius ?? 12}px` }}></div>
+                <div key={`empty-${i}`} className={`shadow-sm border transition-all ${isDarkBg ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'}`}
+                  style={{ borderRadius: `${Math.min(data.glassRadius ?? 16, 24)}px`, aspectRatio: '1 / 1' }}></div>
               ))}
             </div>
           </div>
