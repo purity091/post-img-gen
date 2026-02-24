@@ -95,15 +95,33 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
           <div className="col-span-12 lg:col-span-7 flex flex-col justify-center relative z-10 order-1"
             style={{ padding: `${data.cardPadding}px` }}
           >
-            <div className={`flex flex-col gap-6 ${data.textAlign === 'center' ? 'items-center' : data.textAlign === 'left' ? 'items-start' : 'items-end'}`}>
+            <div className={`relative backdrop-blur-2xl transition-all duration-700 hover:scale-[1.01] overflow-hidden shadow-lg flex flex-col gap-8 w-full
+                  ${isDarkBg ? 'border-white/10 hover:border-white/20' : 'border-slate-200/50 hover:border-slate-300'}
+                  ${data.textAlign === 'center' ? 'items-center' : data.textAlign === 'left' ? 'items-start' : 'items-end'}`}
+              style={{
+                padding: `48px`, // Generous padding for the text container
+                borderRadius: `${Math.min(data.glassRadius ?? 16, 24) * 1.5}px`, // Scaled radius to match proportions
+                backgroundColor: isDarkBg
+                  ? `rgba(255,255,255,${data.glassOpacity || 0.05})`
+                  : `rgba(255,255,255,${(data.glassOpacity || 0.1) + 0.5})`,
+                borderWidth: `${data.glassBorder || 1}px`,
+                borderStyle: 'solid',
+                boxShadow: isDarkBg
+                  ? '0 20px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.05)'
+                  : '0 20px 40px -10px rgba(0,0,0,0.05), inset 0 1px 0 0 rgba(255,255,255,0.4)',
+              }}
+            >
+              {/* Subtle Ambient Light Effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
+                style={{ background: `radial-gradient(circle at top right, ${data.accentColor}, transparent 80%)` }}></div>
 
               {/* Brand Identity (The Signature) - MOVED TO OPPOSITE SIDE (LEFT) per request */}
-              <div className="opacity-90 w-full flex justify-start">
+              <div className="opacity-90 w-full flex justify-start relative z-10">
                 {renderHeader(isDarkBg)}
               </div>
 
               {/* Main Typography (The Headline) */}
-              <div className="w-full">
+              <div className="w-full relative z-10">
                 {renderKeyContent(isDarkBg)}
               </div>
 
