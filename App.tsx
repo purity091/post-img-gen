@@ -188,78 +188,78 @@ const MASTER_INDICATORS = [
 ] as const;
 
 const PROFESSIONAL_THEMES = [
-  // --- DARK MODE (5 THEMES) ---
+  // --- PREMIUM EDITORIAL DARK (5 THEMES) ---
   {
-    id: 'apple-midnight',
-    name: 'Midnight Pro (Dark)',
-    // Apple Midnight: Deep navy/charcoal blend
-    backgroundGradient: 'linear-gradient(135deg, #1E293B 0%, #0F172A 50%, #020617 100%)',
-    accentColor: '#38bdf8', labelColor: '#94a3b8', titleColor: '#f8fafc', borderColor: '#1e293b'
+    id: 'editorial-ceo-void',
+    name: 'Executive Void (Dark)',
+    // Deep midnight black with ultra-high contrast for stark, powerful presentation
+    backgroundGradient: 'linear-gradient(145deg, #09090b 0%, #020617 50%, #000000 100%)',
+    accentColor: '#22d3ee', labelColor: '#94a3b8', titleColor: '#ffffff', borderColor: '#1e293b'
   },
   {
-    id: 'apple-space-black',
-    name: 'Space Black (Dark)',
-    // Apple Space Black: Rich dark grays to pure black
-    backgroundGradient: 'linear-gradient(135deg, #27272A 0%, #18181B 50%, #000000 100%)',
+    id: 'editorial-wwdc-glow',
+    name: 'Keynote Glow (Dark)',
+    // Apple Event style: Pure black canvas ending with a subtle, rich purple aura
+    backgroundGradient: 'radial-gradient(circle at top left, #3b0764 0%, #171717 40%, #000000 100%)',
+    accentColor: '#e879f9', labelColor: '#d8b4fe', titleColor: '#fdf4ff', borderColor: '#4c1d95'
+  },
+  {
+    id: 'editorial-vision-glass',
+    name: 'Spatial Glass (Dark)',
+    // Slate-gray frosted glass aesthetic with golden editorial accent
+    backgroundGradient: 'linear-gradient(135deg, #18181b 0%, #09090b 50%, #000000 100%)',
     accentColor: '#fbbf24', labelColor: '#a3a3a3', titleColor: '#ffffff', borderColor: '#27272a'
   },
   {
-    id: 'apple-alpine-dark',
-    name: 'Alpine Green (Dark)',
-    // Apple Alpine Green (Dark Mode version): Deep forest tones
-    backgroundGradient: 'linear-gradient(135deg, #14532D 0%, #064E3B 50%, #022C22 100%)',
+    id: 'editorial-aurora',
+    name: 'Boreal Night (Dark)',
+    // Deep cinematic teal/green, giving an 'institutional finance' vibe
+    backgroundGradient: 'radial-gradient(circle at bottom right, #064e3b 0%, #022c22 40%, #000000 100%)',
     accentColor: '#34d399', labelColor: '#a7f3d0', titleColor: '#f0fdf4', borderColor: '#065f46'
   },
   {
-    id: 'apple-deep-purple',
-    name: 'Deep Purple (Dark)',
-    // Apple Deep Purple: Rich, dark violet tones
-    backgroundGradient: 'linear-gradient(135deg, #4C1D95 0%, #3B0764 50%, #1E1B4B 100%)',
-    accentColor: '#d8b4fe', labelColor: '#c4b5fd', titleColor: '#f5f3ff', borderColor: '#4c1d95'
-  },
-  {
-    id: 'apple-pacific-blue',
-    name: 'Pacific Blue (Dark)',
-    // Apple Pacific Blue: Deep oceanic blue
-    backgroundGradient: 'linear-gradient(135deg, #0369A1 0%, #075985 50%, #082F49 100%)',
-    accentColor: '#38bdf8', labelColor: '#7dd3fc', titleColor: '#f0f9ff', borderColor: '#075985'
+    id: 'editorial-deep-ocean',
+    name: 'Abyssal Depth (Dark)',
+    // Premium deep blue for tech and corporate articles
+    backgroundGradient: 'linear-gradient(135deg, #0f172a 0%, #020617 60%, #000000 100%)',
+    accentColor: '#38bdf8', labelColor: '#7dd3fc', titleColor: '#f8fafc', borderColor: '#0f172a'
   },
 
-  // --- LIGHT MODE (5 THEMES) ---
+  // --- PREMIUM EDITORIAL LIGHT (5 THEMES) ---
   {
-    id: 'apple-titanium',
-    name: 'Natural Titanium (Light)',
-    // Apple Natural Titanium: Soft metallic grays with a hint of warmth
-    backgroundGradient: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%)',
-    accentColor: '#0f172a', labelColor: '#475569', titleColor: '#0f172a', borderColor: '#cbd5e1'
+    id: 'editorial-clean-slate',
+    name: 'Pristine White (Light)',
+    // The absolute cleanest 'Medium/Substack' article vibe. Crisp white to subtle ultra-light silver.
+    backgroundGradient: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)',
+    accentColor: '#2563eb', labelColor: '#475569', titleColor: '#020617', borderColor: '#e2e8f0'
   },
   {
-    id: 'apple-starlight',
-    name: 'Starlight (Light)',
-    // Apple Starlight: Warm champagne / off-white blend
-    backgroundGradient: 'linear-gradient(135deg, #FFFCF5 0%, #FDF5E6 50%, #F5E6D3 100%)',
-    accentColor: '#b45309', labelColor: '#57534e', titleColor: '#1c1917', borderColor: '#e7e5e4'
+    id: 'editorial-starlight',
+    name: 'Starlight Air (Light)',
+    // Luxurious warm off-white (champagne/sand), perfect for luxury, real-estate, or calm finance.
+    backgroundGradient: 'linear-gradient(135deg, #fdfbf7 0%, #f5f5f4 50%, #ffffff 100%)',
+    accentColor: '#d97706', labelColor: '#57534e', titleColor: '#1c1917', borderColor: '#e7e5e4'
   },
   {
-    id: 'apple-sierra-blue',
-    name: 'Sierra Blue (Light)',
-    // Apple Sierra Blue: Soft, icy pastel blue
-    backgroundGradient: 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #BAE6FD 100%)',
-    accentColor: '#0284c7', labelColor: '#38bdf8', titleColor: '#075985', borderColor: '#bae6fd'
+    id: 'editorial-rose-elegance',
+    name: 'Rose Glow (Light)',
+    // Soft, diffuse pink/red glow on a clean white canvas. Premium fashion/lifestyle vibe.
+    backgroundGradient: 'radial-gradient(circle at top left, #fff1f2 0%, #ffffff 50%, #ffffff 100%)',
+    accentColor: '#e11d48', labelColor: '#9f1239', titleColor: '#4c0519', borderColor: '#ffe4e6'
   },
   {
-    id: 'apple-silver',
-    name: 'Silver (Light)',
-    // Apple Silver: Clean, absolute neutral whites to light gray
-    backgroundGradient: 'linear-gradient(135deg, #FFFFFF 0%, #F4F4F5 50%, #E4E4E7 100%)',
-    accentColor: '#18181b', labelColor: '#52525b', titleColor: '#18181b', borderColor: '#e4e4e7'
+    id: 'editorial-sierra-cloud',
+    name: 'Cloud Blue (Light)',
+    // Icy, crisp light blue gradient. Gives a very modern, Silicon Valley tech article feel.
+    backgroundGradient: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #ffffff 100%)',
+    accentColor: '#0284c7', labelColor: '#0369a1', titleColor: '#075985', borderColor: '#bae6fd'
   },
   {
-    id: 'apple-rose-gold',
-    name: 'Rose Gold (Light)',
-    // Apple Rose Gold: Soft, pale pink with metallic undertone
-    backgroundGradient: 'linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 50%, #FECDD3 100%)',
-    accentColor: '#be123c', labelColor: '#9f1239', titleColor: '#4c0519', borderColor: '#fecdd3'
+    id: 'editorial-mint-pearl',
+    name: 'Mint Pearl (Light)',
+    // Extremely subtle, refreshing mint/teal ambient glow.
+    backgroundGradient: 'radial-gradient(circle at bottom right, #f0fdfa 0%, #ffffff 50%, #f8fafc 100%)',
+    accentColor: '#0d9488', labelColor: '#0f766e', titleColor: '#042f2e', borderColor: '#ccfbf1'
   }
 ];
 
