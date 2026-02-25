@@ -190,96 +190,76 @@ const MASTER_INDICATORS = [
 const PROFESSIONAL_THEMES = [
   // --- DARK MODE (5 THEMES) ---
   {
-    id: 'dark-midnight',
-    name: 'Midnight Executive (Dark)',
-    backgroundGradient: 'linear-gradient(135deg, #020617 0%, #0f172a 100%)', // Very deep slate/black
-    accentColor: '#38bdf8', // Light blue accent
-    labelColor: '#94a3b8',
-    titleColor: '#f8fafc',
-    borderColor: '#1e293b'
+    id: 'apple-midnight',
+    name: 'Midnight Pro (Dark)',
+    // Apple Midnight: Deep navy/charcoal blend
+    backgroundGradient: 'linear-gradient(135deg, #1E293B 0%, #0F172A 50%, #020617 100%)',
+    accentColor: '#38bdf8', labelColor: '#94a3b8', titleColor: '#f8fafc', borderColor: '#1e293b'
   },
   {
-    id: 'dark-obsidian',
-    name: 'Obsidian Minimal (Dark)',
-    backgroundGradient: 'linear-gradient(180deg, #000000 0%, #0a0a0a 100%)', // Pure black minimal
-    accentColor: '#fbbf24', // Amber/Gold accent
-    labelColor: '#a3a3a3',
-    titleColor: '#ffffff',
-    borderColor: '#171717'
+    id: 'apple-space-black',
+    name: 'Space Black (Dark)',
+    // Apple Space Black: Rich dark grays to pure black
+    backgroundGradient: 'linear-gradient(135deg, #27272A 0%, #18181B 50%, #000000 100%)',
+    accentColor: '#fbbf24', labelColor: '#a3a3a3', titleColor: '#ffffff', borderColor: '#27272a'
   },
   {
-    id: 'dark-emerald',
-    name: 'Deep Emerald (Dark)',
-    backgroundGradient: 'linear-gradient(135deg, #022c22 0%, #064e3b 100%)', // Deep forest green
-    accentColor: '#34d399', // Mint green accent
-    labelColor: '#a7f3d0',
-    titleColor: '#f0fdf4',
-    borderColor: '#065f46'
+    id: 'apple-alpine-dark',
+    name: 'Alpine Green (Dark)',
+    // Apple Alpine Green (Dark Mode version): Deep forest tones
+    backgroundGradient: 'linear-gradient(135deg, #14532D 0%, #064E3B 50%, #022C22 100%)',
+    accentColor: '#34d399', labelColor: '#a7f3d0', titleColor: '#f0fdf4', borderColor: '#065f46'
   },
   {
-    id: 'dark-royal',
-    name: 'Royal Velvet (Dark)',
-    backgroundGradient: 'linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%)', // Deep indigo/purple
-    accentColor: '#a78bfa', // Very light purple accent
-    labelColor: '#c4b5fd',
-    titleColor: '#f5f3ff',
-    borderColor: '#4c1d95'
+    id: 'apple-deep-purple',
+    name: 'Deep Purple (Dark)',
+    // Apple Deep Purple: Rich, dark violet tones
+    backgroundGradient: 'linear-gradient(135deg, #4C1D95 0%, #3B0764 50%, #1E1B4B 100%)',
+    accentColor: '#d8b4fe', labelColor: '#c4b5fd', titleColor: '#f5f3ff', borderColor: '#4c1d95'
   },
   {
-    id: 'dark-ocean',
-    name: 'Abyssal Ocean (Dark)',
-    backgroundGradient: 'linear-gradient(135deg, #082f49 0%, #0c4a6e 100%)', // Deep sea blue
-    accentColor: '#38bdf8', // Cerulean accent
-    labelColor: '#7dd3fc',
-    titleColor: '#f0f9ff',
-    borderColor: '#075985'
+    id: 'apple-pacific-blue',
+    name: 'Pacific Blue (Dark)',
+    // Apple Pacific Blue: Deep oceanic blue
+    backgroundGradient: 'linear-gradient(135deg, #0369A1 0%, #075985 50%, #082F49 100%)',
+    accentColor: '#38bdf8', labelColor: '#7dd3fc', titleColor: '#f0f9ff', borderColor: '#075985'
   },
 
   // --- LIGHT MODE (5 THEMES) ---
   {
-    id: 'light-surface',
-    name: 'Surface Clean (Light)',
-    backgroundGradient: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)', // Crisp almost-white
-    accentColor: '#2563eb', // Strong corporate blue
-    labelColor: '#475569',
-    titleColor: '#0f172a',
-    borderColor: '#e2e8f0'
+    id: 'apple-titanium',
+    name: 'Natural Titanium (Light)',
+    // Apple Natural Titanium: Soft metallic grays with a hint of warmth
+    backgroundGradient: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%)',
+    accentColor: '#0f172a', labelColor: '#475569', titleColor: '#0f172a', borderColor: '#cbd5e1'
   },
   {
-    id: 'light-human',
-    name: 'Calm Sand (Light)',
-    backgroundGradient: 'linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%)', // Warm, off-white sand
-    accentColor: '#ea580c', // Burnt orange accent
-    labelColor: '#57534e',
-    titleColor: '#1c1917',
-    borderColor: '#e7e5e4'
+    id: 'apple-starlight',
+    name: 'Starlight (Light)',
+    // Apple Starlight: Warm champagne / off-white blend
+    backgroundGradient: 'linear-gradient(135deg, #FFFCF5 0%, #FDF5E6 50%, #F5E6D3 100%)',
+    accentColor: '#b45309', labelColor: '#57534e', titleColor: '#1c1917', borderColor: '#e7e5e4'
   },
   {
-    id: 'light-mint',
-    name: 'Fresh Mint (Light)',
-    backgroundGradient: 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%)', // Very soft teal/mint
-    accentColor: '#0d9488', // Deep teal accent
-    labelColor: '#115e59',
-    titleColor: '#042f2e',
-    borderColor: '#99f6e4'
+    id: 'apple-sierra-blue',
+    name: 'Sierra Blue (Light)',
+    // Apple Sierra Blue: Soft, icy pastel blue
+    backgroundGradient: 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #BAE6FD 100%)',
+    accentColor: '#0284c7', labelColor: '#38bdf8', titleColor: '#075985', borderColor: '#bae6fd'
   },
   {
-    id: 'light-slate',
-    name: 'Corporate Slate (Light)',
-    backgroundGradient: 'linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%)', // Cool gray
-    accentColor: '#0369a1', // Steady sky blue accent
-    labelColor: '#334155',
-    titleColor: '#0f172a',
-    borderColor: '#94a3b8'
+    id: 'apple-silver',
+    name: 'Silver (Light)',
+    // Apple Silver: Clean, absolute neutral whites to light gray
+    backgroundGradient: 'linear-gradient(135deg, #FFFFFF 0%, #F4F4F5 50%, #E4E4E7 100%)',
+    accentColor: '#18181b', labelColor: '#52525b', titleColor: '#18181b', borderColor: '#e4e4e7'
   },
   {
-    id: 'light-champagne',
-    name: 'Champagne Silk (Light)',
-    backgroundGradient: 'linear-gradient(135deg, #fdfbf7 0%, #f3ede2 100%)', // Very soft luxury beige
-    accentColor: '#b45309', // Deep bronze/gold accent
-    labelColor: '#78716c',
-    titleColor: '#292524',
-    borderColor: '#d6d3d1'
+    id: 'apple-rose-gold',
+    name: 'Rose Gold (Light)',
+    // Apple Rose Gold: Soft, pale pink with metallic undertone
+    backgroundGradient: 'linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 50%, #FECDD3 100%)',
+    accentColor: '#be123c', labelColor: '#9f1239', titleColor: '#4c0519', borderColor: '#fecdd3'
   }
 ];
 
