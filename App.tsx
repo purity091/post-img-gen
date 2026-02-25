@@ -188,78 +188,68 @@ const MASTER_INDICATORS = [
 ] as const;
 
 const PROFESSIONAL_THEMES = [
-  // --- PREMIUM EDITORIAL DARK (5 THEMES) ---
+  // --- APPLE PRO DARK THEMES (5 THEMES) ---
   {
-    id: 'editorial-ceo-void',
-    name: 'Executive Void (Dark)',
-    // Deep midnight black with ultra-high contrast for stark, powerful presentation
-    backgroundGradient: 'linear-gradient(145deg, #09090b 0%, #020617 50%, #000000 100%)',
-    accentColor: '#22d3ee', labelColor: '#94a3b8', titleColor: '#ffffff', borderColor: '#1e293b'
+    id: 'apple-midnight',
+    name: 'Midnight Pro (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #0f172a 0%, #060b13 50%, #000000 100%)',
+    accentColor: '#38bdf8', labelColor: '#94a3b8', titleColor: '#ffffff', borderColor: '#1e293b'
   },
   {
-    id: 'editorial-wwdc-glow',
-    name: 'Keynote Glow (Dark)',
-    // Apple Event style: Pure black canvas ending with a subtle, rich purple aura
-    backgroundGradient: 'radial-gradient(circle at top left, #3b0764 0%, #171717 40%, #000000 100%)',
-    accentColor: '#e879f9', labelColor: '#d8b4fe', titleColor: '#fdf4ff', borderColor: '#4c1d95'
-  },
-  {
-    id: 'editorial-vision-glass',
-    name: 'Spatial Glass (Dark)',
-    // Slate-gray frosted glass aesthetic with golden editorial accent
+    id: 'apple-space-black',
+    name: 'Space Black (Dark)',
     backgroundGradient: 'linear-gradient(135deg, #18181b 0%, #09090b 50%, #000000 100%)',
-    accentColor: '#fbbf24', labelColor: '#a3a3a3', titleColor: '#ffffff', borderColor: '#27272a'
+    accentColor: '#fbbf24', labelColor: '#a1a1aa', titleColor: '#ffffff', borderColor: '#27272a'
   },
   {
-    id: 'editorial-aurora',
-    name: 'Boreal Night (Dark)',
-    // Deep cinematic teal/green, giving an 'institutional finance' vibe
-    backgroundGradient: 'radial-gradient(circle at bottom right, #064e3b 0%, #022c22 40%, #000000 100%)',
-    accentColor: '#34d399', labelColor: '#a7f3d0', titleColor: '#f0fdf4', borderColor: '#065f46'
+    id: 'apple-titanium-dark',
+    name: 'Titanium Dark (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #27272a 0%, #18181b 50%, #09090b 100%)',
+    accentColor: '#34d399', labelColor: '#a1a1aa', titleColor: '#f8fafc', borderColor: '#3f3f46'
   },
   {
-    id: 'editorial-deep-ocean',
-    name: 'Abyssal Depth (Dark)',
-    // Premium deep blue for tech and corporate articles
-    backgroundGradient: 'linear-gradient(135deg, #0f172a 0%, #020617 60%, #000000 100%)',
-    accentColor: '#38bdf8', labelColor: '#7dd3fc', titleColor: '#f8fafc', borderColor: '#0f172a'
+    id: 'apple-deep-forest',
+    name: 'Deep Forest (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #064e3b 0%, #022c22 50%, #000000 100%)',
+    accentColor: '#10b981', labelColor: '#6ee7b7', titleColor: '#ecfdf5', borderColor: '#059669'
+  },
+  {
+    id: 'apple-royal-velvet',
+    name: 'Royal Velvet (Dark)',
+    backgroundGradient: 'linear-gradient(135deg, #2e1065 0%, #170535 50%, #000000 100%)',
+    accentColor: '#d8b4fe', labelColor: '#c4b5fd', titleColor: '#faf5ff', borderColor: '#4c1d95'
   },
 
-  // --- PREMIUM EDITORIAL LIGHT (5 THEMES) ---
+  // --- APPLE PRO LIGHT THEMES (5 THEMES) ---
   {
-    id: 'editorial-clean-slate',
-    name: 'Pristine White (Light)',
-    // The absolute cleanest 'Medium/Substack' article vibe. Crisp white to subtle ultra-light silver.
-    backgroundGradient: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)',
-    accentColor: '#2563eb', labelColor: '#475569', titleColor: '#020617', borderColor: '#e2e8f0'
-  },
-  {
-    id: 'editorial-starlight',
-    name: 'Starlight Air (Light)',
-    // Luxurious warm off-white (champagne/sand), perfect for luxury, real-estate, or calm finance.
-    backgroundGradient: 'linear-gradient(135deg, #fdfbf7 0%, #f5f5f4 50%, #ffffff 100%)',
+    id: 'apple-starlight',
+    name: 'Starlight (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #f5f5f4 100%)',
     accentColor: '#d97706', labelColor: '#57534e', titleColor: '#1c1917', borderColor: '#e7e5e4'
   },
   {
-    id: 'editorial-rose-elegance',
-    name: 'Rose Glow (Light)',
-    // Soft, diffuse pink/red glow on a clean white canvas. Premium fashion/lifestyle vibe.
-    backgroundGradient: 'radial-gradient(circle at top left, #fff1f2 0%, #ffffff 50%, #ffffff 100%)',
-    accentColor: '#e11d48', labelColor: '#9f1239', titleColor: '#4c0519', borderColor: '#ffe4e6'
+    id: 'apple-pure-silver',
+    name: 'Pure Silver (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #ffffff 0%, #f9fafb 50%, #f3f4f6 100%)',
+    accentColor: '#2563eb', labelColor: '#4b5563', titleColor: '#030712', borderColor: '#e5e7eb'
   },
   {
-    id: 'editorial-sierra-cloud',
-    name: 'Cloud Blue (Light)',
-    // Icy, crisp light blue gradient. Gives a very modern, Silicon Valley tech article feel.
-    backgroundGradient: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #ffffff 100%)',
-    accentColor: '#0284c7', labelColor: '#0369a1', titleColor: '#075985', borderColor: '#bae6fd'
+    id: 'apple-natural-titanium',
+    name: 'Natural Titanium (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #e7e5e4 100%)',
+    accentColor: '#ea580c', labelColor: '#57534e', titleColor: '#0c0a09', borderColor: '#d6d3d1'
   },
   {
-    id: 'editorial-mint-pearl',
-    name: 'Mint Pearl (Light)',
-    // Extremely subtle, refreshing mint/teal ambient glow.
-    backgroundGradient: 'radial-gradient(circle at bottom right, #f0fdfa 0%, #ffffff 50%, #f8fafc 100%)',
-    accentColor: '#0d9488', labelColor: '#0f766e', titleColor: '#042f2e', borderColor: '#ccfbf1'
+    id: 'apple-sierra-blue',
+    name: 'Sierra Blue (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%)',
+    accentColor: '#0284c7', labelColor: '#0369a1', titleColor: '#082f49', borderColor: '#7dd3fc'
+  },
+  {
+    id: 'apple-desert-sand',
+    name: 'Desert Sand (Light)',
+    backgroundGradient: 'linear-gradient(135deg, #ffffff 0%, #ffedd5 50%, #fed7aa 100%)',
+    accentColor: '#c2410c', labelColor: '#9a3412', titleColor: '#431407', borderColor: '#fdba74'
   }
 ];
 

@@ -70,7 +70,9 @@ const CardPreview: React.FC<CardPreviewProps> = ({ data }) => {
 
   const renderModern = () => {
     // Dynamic styles based on theme/background brightness
-    const isDarkBg = data.backgroundMode === 'color' && ['#1e293b', '#0f172a', '#000000', '#18181b', '#111827'].includes(data.backgroundColor);
+    const isDarkTitle = data.titleColor && (data.titleColor.toLowerCase().startsWith('#f') || data.titleColor.toLowerCase().startsWith('#e') || data.titleColor.toLowerCase() === '#ffffff');
+    const isDarkBg = (data.backgroundMode === 'color' && ['#1e293b', '#0f172a', '#000000', '#18181b', '#111827'].includes(data.backgroundColor)) ||
+      (data.backgroundMode === 'gradient' && isDarkTitle);
     const primaryTextColor = isDarkBg ? 'text-white' : 'text-slate-900';
     const secondaryTextColor = isDarkBg ? 'text-slate-400' : 'text-slate-500';
 
